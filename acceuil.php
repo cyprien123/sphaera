@@ -46,7 +46,7 @@
 	   var pseudoOk = verifmessage(f.contenu);
 	   //var mailOk = verifMail(f.email);
 	   //var ageOk = verifAge(f.age);
-	   
+	   // essai d'ajout pour vérifier gitkraken
 	   if(pseudoOk)
 		  return true;
 	   else
