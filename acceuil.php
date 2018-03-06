@@ -42,5 +42,5 @@
 			echo $donnees['pseudo'] . ' : ' . $donnees['contenue'] . '<br />';
 		}
 		$message->closeCursor();
-
+Essai de modification daniel
 -->
