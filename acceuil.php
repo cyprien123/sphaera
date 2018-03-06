@@ -11,6 +11,7 @@
 	<body>
 		
 		<h1> Mon premier tchat</h1>
+		 <a href="profile.php">profile </a>
 		<?php 
 	
 			echo $_SESSION['pseudo'] ;
