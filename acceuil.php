@@ -6,9 +6,10 @@
 		<title></title>
 		
 		<script>
-		function prevention(document.form1.contenu.value) {
-		document.form1.contenu.value = preg_replace("/[\'\")(;|`,<>]/", "", document.form1.contenu.value); 
-		return document.form1.contenu.value;
+		function prevention() {
+		var text=document.form1.contenu.value
+		text = preg_replace("/[\'\")(;|`,<>]/", "", text); 
+		document.form1.contenu.value=text;
     	}  
 		</script>
 
@@ -25,7 +26,7 @@
 			?><br /> <br />
 		---------------------------------------------------------------	
 		
-	<form  action="minitchat2.php" method="post">
+	<form name="form1" action="minitchat2.php" method="post">
 		Message : <input type="text" name="contenu" onClick="prevention();" /><br /> <br />
 		<input type="submit" value="valider"/>
 	</form>
