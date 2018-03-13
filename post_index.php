@@ -35,8 +35,8 @@ else
 					
 					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					
-					$sql = "INSERT INTO membre (pseudo, email, pass, date_inscription)
-					VALUES ('$pseudo', '$email', '$pass', NOW())";
+					$sql = "INSERT INTO membre (pseudo, email, pass, date_inscription, photo)
+					VALUES ('$pseudo', '$email', '$pass', NOW(), 'image/flechegauch.png')";
 								
 					// use exec() because no results are returned
 					$conn->exec($sql);
@@ -47,6 +47,7 @@ else
 			}
 
 		$conn = null;
+		
 		header('Location: connexion.php');
 	}
 	else
