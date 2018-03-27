@@ -35,11 +35,21 @@ else
 					
 					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					
+					$recherche = mysql_query("select * from membre where pseudo='$pseudo'");
+					$result = mysql_fetch_array($recherche);
+					$liste = $result["pseudo"];
+					
+				if ($liste == $pseudo)
+				{
+					echo "Le pseudo que vous demandez est déjà pris. Merci de le changer.";
+				}
+				else {	
 					$sql = "INSERT INTO membre (pseudo, email, pass, date_inscription)
 					VALUES ('$pseudo', '$email', '$pass', NOW())";
 								
 					// use exec() because no results are returned
 					$conn->exec($sql);
+					}
 			}
 		catch(PDOException $e)
 			{
@@ -55,53 +65,24 @@ else
 	}
 }
 
-// >> j'ai laissé ton code si besoin
 
-/*
+
+
+
+
+
+
+
+	/*include('inscription.php');
+	} 
+	mysql_query("INSERT INTO paris_joueurs (nom, pseudo, mdp, mail, adresse, cp, ville, pays) VALUES ('$nom','$pseudo','$mot_de_passe','$mail','$adresse','$code_postal','$ville','$pays')");
+	echo "Votre enregistrement à bien été pris en compte. Merci.";
+	include('login.php');*/
+}
+?>
+
+
 	
-	if(!$_POST['pseudo']OR !$_POST['adresse'])
-	{
-		echo 'veillez inserer un pseudo ou une adresse email';
-	}
-	else
-	{
-
-
-		if( $_POST['mot_de_passe'] == $_POST['confirmation_mot_de_passe'])
-		{
-			echo "test6";	
-			$bdd = new PDO('mysql:host=$servername;dbname=$dbname;charset=utf8',$username,$password);
-			
-
-			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			
-			$req = $bdd->prepare('INSERT INTO membre(pseudo, email, pass, date_inscription ) VALUES( :pseudo, :email, :pass, NOW() )');
-			
-			$req->execute(array(
-				'pseudo'=>$_POST['pseudo'],
-				'email'=>$_POST['adresse'],
-				'pass'=>$_POST['mot_de_passe']));
-			
-			$stmt->execute($req) or die(print_r($req->errorInfo(), true));
-
-			$req->closeCursor();
-			header('Location: connexion.php');
-		echo 'cc';
-		}
-		else
-		{
-		echo 'les deux mots de passes ne corespondent pas ' ;
-		}
-		
-
-		
-		
-	
-	}
-*/
-
-
-	?>
 	
 
 	
