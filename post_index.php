@@ -7,7 +7,7 @@
 	</head>
 	
 	<body>
-	<?php
+<?php
 
 $servername = "localhost";
 $username = "root";
@@ -30,25 +30,27 @@ else
 {
 	if($pass == $_POST['confirmation_mot_de_passe'])
 	{
-		try {
+		try { 
 					$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 					
 					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					
-					$recherche = mysql_query("select * from membre where pseudo='$pseudo'");
+					$recherche = mysql_query("select * FROM membre WHERE pseudo=$pseudo");
 					$result = mysql_fetch_array($recherche);
 					$liste = $result["pseudo"];
 					
-				if ($liste == $pseudo)
-				{
-					echo "Le pseudo que vous demandez est déjà pris. Merci de le changer.";
-				}
-				else {	
+					if ($liste == $pseudo)
+					{
+						echo "Le pseudo que vous demandez est déjà pris. Merci de le changer.";
+					}
+				else{
+				
 					$sql = "INSERT INTO membre (pseudo, email, pass, date_inscription)
 					VALUES ('$pseudo', '$email', '$pass', NOW())";
 								
 					// use exec() because no results are returned
 					$conn->exec($sql);
+					
 					}
 			}
 		catch(PDOException $e)
@@ -63,6 +65,7 @@ else
 	{
 		echo 'les deux mots de passes ne corespondent pas ' ;
 	}
+	echo"cc";
 }
 
 
